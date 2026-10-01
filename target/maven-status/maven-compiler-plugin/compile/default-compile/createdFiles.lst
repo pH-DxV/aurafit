@@ -1,0 +1,4 @@
+br\unitins\topicos1\aurafit\repository\CategoriaRepository.class
+br\unitins\topicos1\aurafit\service\CategoriaService.class
+br\unitins\topicos1\aurafit\resource\CategoriaResource.class
+br\unitins\topicos1\aurafit\model\Categoria.class

@@ -1,0 +1,108 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Pessoa {
+  - id: Long
+  - nome: String
+  - cpf: String
+  - email: String
+  + cadastrar(): void
+  + atualizar(): void
+  + excluir(): void
+}
+
+class Funcionario {
+  - matricula: String
+  - cargo: String
+  - salario: Double
+  + cadastrar(): void
+  + atualizar(): void
+  + excluir(): void
+}
+
+class Categoria {
+  - id: Long
+  - nome: String
+  - descricao: String
+  + cadastrar(): void
+  + atualizar(): void
+  + excluir(): void
+}
+
+class Marca {
+  - id: Long
+  - nome: String
+  - cnpj: String
+  - emailContato: String
+  + cadastrar(): void
+  + atualizar(): void
+  + excluir(): void
+}
+
+class Fornecedor {
+  - id: Long
+  - razaoSocial: String
+  - cnpj: String
+  - telefone: String
+  - email: String
+  + cadastrar(): void
+  + atualizar(): void
+  + excluir(): void
+}
+
+class Produto {
+  - id: Long
+  - nome: String
+  - descricao: String
+  - preco: Double
+  - pesoGramas: Integer
+  - tipoProteina: String
+  - ativo: Boolean
+  + cadastrar(): void
+  + atualizar(): void
+  + excluir(): void
+  + ativar(): void
+  + desativar(): void
+}
+
+class Estoque {
+  - id: Long
+  - quantidadeAtual: Integer
+  - quantidadeMinima: Integer
+  - localizacao: String
+  + adicionarQuantidade(qtd: Integer): void
+  + retirarQuantidade(qtd: Integer): void
+  + atualizar(): void
+}
+
+class Lote {
+  - id: Long
+  - codigo: String
+  - dataFabricacao: LocalDate
+  - dataValidade: LocalDate
+  - quantidadeRecebida: Integer
+  + cadastrar(): void
+  + atualizar(): void
+  + excluir(): void
+  + verificarValidade(): Boolean
+}
+
+class Sabor {
+  - id: Long
+  - nome: String
+  - descricao: String
+  + cadastrar(): void
+  + atualizar(): void
+  + excluir(): void
+}
+
+Pessoa <|-- Funcionario
+
+Categoria "1" -- "0..*" Produto : classifica
+Marca "1" -- "0..*" Produto : pertence
+Fornecedor "1" o-- "0..*" Produto : fornece
+Produto "1" *-- "1" Estoque : possui
+Produto "1" -- "0..*" Lote : gera
+Produto "0..*" -- "0..*" Sabor : contem
+
+@enduml
